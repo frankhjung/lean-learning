@@ -1,4 +1,5 @@
-name: Lean Action CI
+---
+name: lean-action-ci
 
 on:
   push:
@@ -12,3 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: leanprover/lean-action@v1
+      - name: Build and Lint
+        run: |
+          lake build
+          lake lint
+      - name: Run main program
+        run: lake exe learning HelloWorld

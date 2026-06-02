@@ -28,6 +28,30 @@ lake exe learning
 The [Basic.lean](Learning/Basic.lean) file contains examples of basic concepts
 in Lean.
 
+## CI/CD
+
+### Building
+
+This project uses GitHub Actions for continuous integration. The workflow is
+defined in the
+[.github/workflows/lean_action_ci.yml](.github/workflows/lean_action_ci.yml)
+file. It runs on every push to the repository.
+
+### Linting
+
+This project uses `lake lint` with the Batteries linter. To install the
+dependency and run the linter locally, run:
+
+```bash
+lake update
+lake build
+lake lint
+```
+
+If the linter reports missing documentation or unused-argument warnings, edit
+the indicated files to satisfy the linters (there is no general autofix).
+
+
 ## Resources
 
 - [Functional Programming in Lean][functional-programming-in-lean] - A book on

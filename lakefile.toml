@@ -1,6 +1,11 @@
 name = "learning"
 version = "0.1.0"
 defaultTargets = ["learning"]
+lintDriver = "batteries/runLinter"
+
+[[require]]
+name = "batteries"
+scope = "leanprover-community"
 
 [[lean_lib]]
 name = "Learning"
