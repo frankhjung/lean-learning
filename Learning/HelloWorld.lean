@@ -1,5 +1,7 @@
+namespace Learning.HelloWorld
+
 -- Define a simple constant
-def hello := "world"
+def name := "Lean"
 
 def greet : String → String
-| name => s!"Hello, {name}!"
+| name => s!"Hello World, {name}!"

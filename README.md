@@ -51,7 +51,6 @@ lake lint
 If the linter reports missing documentation or unused-argument warnings, edit
 the indicated files to satisfy the linters (there is no general autofix).
 
-
 ## Resources
 
 - [Functional Programming in Lean][functional-programming-in-lean] - A book on

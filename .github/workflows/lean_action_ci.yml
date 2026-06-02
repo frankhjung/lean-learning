@@ -3,8 +3,17 @@ name: lean-action-ci
 
 on:
   push:
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -13,9 +22,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: leanprover/lean-action@v1
-      - name: Build and Lint
+      - name: Build project and run tests
         run: |
           lake build
           lake lint
-      - name: Run main program
-        run: lake exe learning HelloWorld
+          lake test
+          lake exe learning LEAN
