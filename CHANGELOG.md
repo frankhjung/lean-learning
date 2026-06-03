@@ -1,7 +1,6 @@
 # Changelog
 
-All notable changes to the `learning` Lean project are documented in this
-file.
+All notable changes to the `learning` Lean project are documented in this file.
 
 ## [0.1.0] - 2026-06-03
 
@@ -37,19 +36,25 @@ file.
   arguments.
 - **Makefile Configuration:** Reorganized targets and aligned the default goal
   to run `build test lint`.
-- **Makefile Documentation (`docs/makefile.md`):** Aligned default goals to
-  run `build test lint` (omitting `update`) and corrected grammatical errors.
+- **Makefile Documentation (`docs/makefile.md`):** Aligned default goals to run
+  `build test lint` (omitting `update`) and corrected grammatical errors.
 - **CI Pages Documentation (`docs/pages.md`):** Corrected grammatical typos
   regarding GitHub Pages publishing.
+- **CI Workflow
+  ([.github/workflows/lean_action_ci.yml](.github/workflows/lean_action_ci.yml)):**
+  Split the CI into separate `build` (compile, lint, test), `docs` (build
+  documentation and upload pages artifact on `main`), and `pages` (deploy-only)
+  jobs. This prevents a second compile on the Pages runner and reduces PR
+  latency.
 
 ### Fixed
 
 - **Doc Generation Configuration (`docbuild/lakefile.toml`):** Configured
   `[leanOptions]` with `maxHeartbeats = 0` to prevent heartbeat timeout warnings
   during documentation compilation.
-- **Lake Configuration (`lakefile.toml`):** Restored the `[[lean_lib]]` definition
-  for `Test` to fix build errors where the `Test` module prefix was unknown to
-  the compiler.
+- **Lake Configuration (`lakefile.toml`):** Restored the `[[lean_lib]]`
+  definition for `Test` to fix build errors where the `Test` module prefix was
+  unknown to the compiler.
 - **Gitignore (`.gitignore`):** Cleaned up duplicate entries for `/.lake` and
   `docbuild/.lake`, and reordered entries for better readability.
 - **Code Standards (`Learning/Basic.lean`, `Test/Basic.lean`):** Renamed the

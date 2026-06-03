@@ -39,7 +39,9 @@ This project uses GitHub Actions for continuous integration and deployment. The
 workflow is defined in the
 [.github/workflows/lean_action_ci.yml](.github/workflows/lean_action_ci.yml)
 file. It runs on every push to the repository to build, test, and lint the code.
-Pushes to the `main` branch will also automatically generate and deploy the
+Pull requests run the `build` job only; documentation is built on `main` by a
+`docs` job and `pages` is deploy-only (publishes the uploaded artifact). Pushes
+to the `main` branch will also automatically generate and deploy the
 documentation to GitHub Pages.
 
 ### Linting
@@ -59,10 +61,10 @@ lake lint
 If the linter reports missing documentation or unused-argument warnings, edit
 the indicated files to satisfy the linters (there is no general autofix).
 
-Configuration: this project uses the `batteries` linter driver. The
-`batteries` runner reads `scripts/nolints.json` (if present) to store and
-retrieve suppressed lint entries. To update the `nolints` file after
-inspecting linter output, run:
+Configuration: this project uses the `batteries` linter driver. The `batteries`
+runner reads `scripts/nolints.json` (if present) to store and retrieve
+suppressed lint entries. To update the `nolints` file after inspecting linter
+output, run:
 
 ```bash
 lake lint -- --update
@@ -127,6 +129,7 @@ The following GitHub Actions are used in this project:
 - [Lean Homepage][lean-homepage] - The official homepage of Lean.
 - [FAQ][lean-faq] - A frequently asked questions page about Lean.
 - [Notebook][lean-notebook] - A notebook interface for Lean.
+- [Package Reservoir][lean-reservoir] - The GitHub repository for Lean.
 
 [functional-programming-in-lean]: https://lean-lang.org/functional_programming_in_lean/
 [lean-api-docs]: https://lean-lang.org/doc/api/
@@ -135,3 +138,5 @@ The following GitHub Actions are used in this project:
 [lean-homepage]: https://leanprover.github.io/
 [lean-installation]: https://lean-lang.org/install/
 [lean-notebook]: https://notebooklm.google.com/notebook/c5971c43-5793-44b4-8fa9-65a968dfe8c5
+[lean-reservoir]: https://reservoir.lean-lang.org/
+
