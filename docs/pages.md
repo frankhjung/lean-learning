@@ -2,9 +2,9 @@
 
 ## Objective
 
-In the CI/CD pipeline, we want build the documentation automatically. Add a step
+In the CI/CD pipeline, we want to build the documentation automatically. Add a step
 to the GitHub Actions workflow to build the documentation using Lake, and
-publish to pages.
+publish to GitHub Pages.
 
 ## Detail
 

@@ -3,9 +3,9 @@
 ## Objective
 
 This project uses Lake as the build system, which provides a convenient way to
-manage dependencies, build, test, and lint the project. However, using Makefile
-provides additional convenience and allows for greater flexibility in defining
-custom build rules and automating repetitive tasks.
+manage dependencies, build, test, and lint the project. However, using a
+Makefile provides additional convenience and allows for greater flexibility in
+defining custom build rules and automating repetitive tasks.
 
 ## Tasks
 
@@ -22,7 +22,7 @@ Support the following targets:
 - `make update`: Updates the dependencies using Lake.
 - `make help`: Displays the available targets and their descriptions.
 - `make all`: Builds, tests, lints and generates documentation for the project.
-- `make default`: Updates, builds, tests and lints the project (default goal).
+- `make default`: Builds, tests and lints the project (default goal).
 
 ## Notes
 
@@ -32,9 +32,18 @@ The `doc` target needs to:
 
 ```bash
 cd docbuild               -- run from inside the docbuild directory
-lake update doc-gen4      -- update the doc-gen4 dependency
 lake build Learning:docs  -- build the documentation
 ```
+
+### update target
+
+The `update` target needs to:
+
+```bash
+lake update
+cd docbuild && lake update doc-gen4
+```
+
 
 ### help target
 
@@ -49,8 +58,7 @@ help: ## Show this help message
 
 ## Decisions
 
-- **Default Goal**: Set to `default`, which runs `update build test
-  lint`.
+- **Default Goal**: Set to `default`, which runs `build test lint`.
 - **Target Definitions**: All non-file targets are explicitly declared as
   `.PHONY` to prevent conflicts with file names.
 - **Execution of `doc`**: The commands for generating documentation are

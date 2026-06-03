@@ -7,7 +7,7 @@ arithmetic, type aliases/abbreviations, and simple boolean predicates.
 
 /-- Return a string that appends either `42` or `0` to `name` depending on `value`.
     This demonstrates a conditional expression and `toString` conversion. -/
-def HitchHiker (name : String) (value : Int) : String :=
+def hitchHiker (name : String) (value : Int) : String :=
   String.append name (toString (if value > 2 then 42 else 0))
 
 /-- Increment `n` by one. Simple example of a numeric function on `Nat`. -/

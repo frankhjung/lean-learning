@@ -9,6 +9,6 @@ used by the `learning` executable and tests. -/
 def name := "Lean"
 
 /-- Greet the provided `name` with a "Hello World" message.
-	Returns a `String` of the form "Hello World, <name>!". -/
+    Returns a `String` of the form "Hello World, <name>!". -/
 def greet : String → String
-| name => s!"Hello World, {name}!"
+  | name => s!"Hello World, {name}!"

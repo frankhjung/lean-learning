@@ -4,7 +4,7 @@
 
 all: build test lint doc ## Build, test, lint and generate documentation
 
-default: update build test lint ## Default goal: build, test and lint the project
+default: build test lint ## Default goal: build, test and lint the project
 
 build: ## Build the project using Lake
 	lake build
@@ -19,13 +19,14 @@ lint: ## Run the linter using Lake
 	lake lint
 
 doc: ## Generate documentation using Lake
-	cd docbuild && lake update doc-gen4 && lake build Learning:docs
+	cd docbuild && lake build Learning:docs
 
 clean: ## Clean the build artifacts
 	lake clean
 
 update: ## Update the dependencies using Lake
 	lake update
+	cd docbuild && lake update doc-gen4
 
 help: ## Show this help message
 	@echo ""

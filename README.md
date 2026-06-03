@@ -22,7 +22,8 @@ Then you should be able to build and run the project:
 make build
 # or: lake build
 
-lake exe learning
+lake exe learning <name>
+# e.g. lake exe learning "Frank Jung"
 ```
 
 ## Basic Concepts
@@ -57,6 +58,17 @@ lake lint
 
 If the linter reports missing documentation or unused-argument warnings, edit
 the indicated files to satisfy the linters (there is no general autofix).
+
+Configuration: this project uses the `batteries` linter driver. The
+`batteries` runner reads `scripts/nolints.json` (if present) to store and
+retrieve suppressed lint entries. To update the `nolints` file after
+inspecting linter output, run:
+
+```bash
+lake lint -- --update
+```
+
+To add project-specific suppressions, create or edit `scripts/nolints.json`.
 
 ### Testing
 

@@ -15,8 +15,8 @@ def runTests (st : IO.Ref State) : IO Unit := do
   assertEqual st (String.append "Hello, " "world!") "Hello, world!" "String.append"
 
   -- Conditional evaluation example
-  assertEqual st (HitchHiker "Arthur" 5) "Arthur42" "HitchHiker Arthur 5"
-  assertEqual st (HitchHiker "Ford" 1) "Ford0" "HitchHiker Ford 1"
+  assertEqual st (hitchHiker "Arthur" 5) "Arthur42" "hitchHiker Arthur 5"
+  assertEqual st (hitchHiker "Ford" 1) "Ford0" "hitchHiker Ford 1"
 
   -- Types: natural numbers
   assertEqual st (5 + 10 : Nat) 15 "5 + 10 : Nat"
