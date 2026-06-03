@@ -32,12 +32,14 @@ in Lean.
 
 ## CI/CD
 
-### Building
+### CI/CD Workflow
 
-This project uses GitHub Actions for continuous integration. The workflow is
-defined in the
+This project uses GitHub Actions for continuous integration and deployment. The
+workflow is defined in the
 [.github/workflows/lean_action_ci.yml](.github/workflows/lean_action_ci.yml)
-file. It runs on every push to the repository.
+file. It runs on every push to the repository to build, test, and lint the code.
+Pushes to the `main` branch will also automatically generate and deploy the
+documentation to GitHub Pages.
 
 ### Linting
 
@@ -71,7 +73,11 @@ directory.
 
 ### Documentation
 
-To generate the project documentation, run:
+The project documentation is automatically published to GitHub Pages and can be
+viewed at:
+[https://frankhjung.github.io/lean-learning/](https://frankhjung.github.io/lean-learning/)
+
+To generate the project documentation locally, run:
 
 ```bash
 make doc
@@ -84,13 +90,21 @@ lake build Learning:docs
 Once generated, you can serve the documentation locally by running:
 
 ```bash
-cd docbuild
-python3 -m http.server --directory .lake/build/doc 8000
+python3 -m http.server --directory docbuild/.lake/build/doc 8000
 ```
 
 This should render something like this in your browser:
 
-![Documentation Screenshot](doc-screenshot.png)
+![Documentation Screenshot](docs/doc-screenshot.png)
+
+## GitHub Actions
+
+The following GitHub Actions are used in this project:
+
+- [actions/checkout](https://github.com/actions/checkout)
+- [leanprover/lean-action](https://github.com/leanprover/lean-action)
+- [actions/upload-pages-artifact](https://github.com/actions/upload-pages-artifact)
+- [actions/deploy-pages](https://github.com/actions/deploy-pages)
 
 ## Resources
 

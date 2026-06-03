@@ -15,12 +15,14 @@ Support the following targets:
 
 - `make build`: Builds the project using Lake.
 - `make test`: Runs the tests using Lake.
+- `make exe`: Runs the `learning` executable with a sample name.
 - `make lint`: Runs the linter using Lake.
 - `make doc`: Generates documentation using Lake.
 - `make clean`: Cleans the build artifacts.
 - `make update`: Updates the dependencies using Lake.
 - `make help`: Displays the available targets and their descriptions.
 - `make all`: Builds, tests, lints and generates documentation for the project.
+- `make default`: Updates, builds, tests and lints the project (default goal).
 
 ## Notes
 
@@ -47,11 +49,12 @@ help: ## Show this help message
 
 ## Decisions
 
-- **Default Goal**: Set to `test`.
+- **Default Goal**: Set to `default`, which runs `update build test
+  lint`.
 - **Target Definitions**: All non-file targets are explicitly declared as
   `.PHONY` to prevent conflicts with file names.
-- **Execution of `doc`**: The commands for generating documentation are chained
-  using `&&` within the `docbuild` directory, ensuring the sequence stops on any
-  error.
-- **`all` Target**: Implemented as a target with prerequisites (`all: build test
-  lint doc`) rather than a sub-make command.
+- **Execution of `doc`**: The commands for generating documentation are
+  chained using `&&` within the `docbuild` directory, ensuring the
+  sequence stops on any error.
+- **`all` Target**: Implemented as a target with prerequisites
+  (`all: build test lint doc`) rather than a sub-make command.

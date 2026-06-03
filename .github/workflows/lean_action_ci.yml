@@ -20,11 +20,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: leanprover/lean-action@v1
       - name: Build project and run tests
         run: |
+          lake update
           lake build
           lake lint
           lake test
           lake exe learning LEAN
+
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: leanprover/lean-action@v1
+      - name: Build documentation
+        run: |
+          cd docbuild
+          lake update doc-gen4
+          lake build Learning:docs
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: "docbuild/.lake/build/doc"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
