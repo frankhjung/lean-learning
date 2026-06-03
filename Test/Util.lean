@@ -20,6 +20,6 @@ def assertEqual {α : Type} [BEq α] [ToString α] (st : IO.Ref State) (actual :
 def summary (st : IO.Ref State) : IO Unit := do
   let s ← st.get
   IO.println ""
-  IO.println s!"Test summary: {s.total} tests, {s.fails} failures"
+  IO.println s!"[TEST] Summary: {s.total} tests, {s.fails} failures"
 
 end Test.Util

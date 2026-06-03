@@ -45,6 +45,7 @@ jobs:
       - name: Build documentation
         run: |
           cd docbuild
+          lake update doc-gen4
           lake build Learning:docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5

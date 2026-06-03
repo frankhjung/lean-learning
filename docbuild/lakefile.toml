@@ -3,6 +3,9 @@ reservoir = false
 version = "0.1.0"
 packagesDir = "../.lake/packages"
 
+[leanOptions]
+maxHeartbeats = 0
+
 [[require]]
 scope = "leanprover"
 name = "doc-gen4"

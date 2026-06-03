@@ -6,7 +6,7 @@ namespace Test.Basic
 open Test.Util (assertEqual State mkState summary)
 
 def runTests (st : IO.Ref State) : IO Unit := do
-  IO.println "\n--- Testing Learning.Basic ---"
+  IO.println "\n[TEST] Testing Learning.Basic"
 
   -- Numeric evaluation examples
   assertEqual st (1 + 2 * 5) 11 "1 + 2 * 5"

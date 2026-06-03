@@ -7,7 +7,7 @@ open Test.Util (assertEqual State mkState summary)
 namespace Test.HelloWorld
 
 def runTests (st : IO.Ref State) : IO Unit := do
-  IO.println "\n--- Testing Learning.HelloWorld ---"
+  IO.println "\n[TEST] Testing Learning.HelloWorld"
 
   assertEqual st name "Lean" "name constant"
   assertEqual st (greet name) "Hello World, Lean!" "greet function with 'Lean'"

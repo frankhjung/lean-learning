@@ -9,7 +9,7 @@ instance : ToString Point where
 namespace Test.Structure
 
 def runTests (st : IO.Ref State) : IO Unit := do
-  IO.println "\n--- Testing Learning.Structure ---"
+  IO.println "\n[TEST] Testing Learning.Structure"
 
   assertEqual st origin.x 0.0 "origin.x"
   assertEqual st origin.y 0.0 "origin.y"
