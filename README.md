@@ -19,7 +19,9 @@ lake new learning
 Then you should be able to build and run the project:
 
 ```bash
-lake build
+make build
+# or: lake build
+
 lake exe learning
 ```
 
@@ -43,6 +45,9 @@ This project uses `lake lint` with the Batteries linter. To install the
 dependency and run the linter locally, run:
 
 ```bash
+make update
+make lint
+# or using lake directly:
 lake update
 lake build
 lake lint
@@ -50,6 +55,42 @@ lake lint
 
 If the linter reports missing documentation or unused-argument warnings, edit
 the indicated files to satisfy the linters (there is no general autofix).
+
+### Testing
+
+To run the tests locally, run:
+
+```bash
+make test
+# or using lake directly:
+lake test
+```
+
+This will rebuild the project and execute the tests defined in the `Test`
+directory.
+
+### Documentation
+
+To generate the project documentation, run:
+
+```bash
+make doc
+# or using lake directly:
+cd docbuild
+lake update doc-gen4
+lake build Learning:docs
+```
+
+Once generated, you can serve the documentation locally by running:
+
+```bash
+cd docbuild
+python3 -m http.server --directory .lake/build/doc 8000
+```
+
+This should render something like this in your browser:
+
+![Documentation Screenshot](doc-screenshot.png)
 
 ## Resources
 
