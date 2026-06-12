@@ -1,7 +1,8 @@
 .DEFAULT_GOAL := default
 
 CD	:= cd
-LAKE	:= lake
+LEAN_PREFIX := $(shell lean --print-prefix)
+LAKE	:= LD_LIBRARY_PATH="$(LEAN_PREFIX)/lib" lake
 RM	:= rm -rf
 
 .PHONY: all default build test lint doc clean update help exe
@@ -16,28 +17,28 @@ help: ## Show this help message
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\nTargets:\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
 
 build: ## Build the project using Lake
-	$(LAKE) build
+	@$(LAKE) build
 
 test: ## Run the tests using Lake
-	$(LAKE) test
+	@$(LAKE) test
 
 exe: ## Run the `learning` executable with a sample name
-	$(LAKE) exe learning "Frank Jung"
+	@$(LAKE) exe learning "Frank Jung"
 
 lint: ## Run the linter using Lake
-	$(LAKE) lint
+	@$(LAKE) lint
 
 doc: ## Generate documentation using Lake
-	cd docbuild && \
-	$(LAKE) update doc-gen4 && \
-	$(LAKE) build Learning:docs
+	@$(CD) docbuild && \
+	@$(LAKE) update doc-gen4 && \
+	@$(LAKE) build Learning:docs
 
 update: ## Update the dependencies using Lake
-	$(LAKE) update
-	$(CD) docbuild && $(LAKE) update doc-gen4
+	@$(LAKE) update
+	@$(CD) docbuild && $(LAKE) update doc-gen4
 
 clean: ## Clean the build artifacts
-	$(LAKE) clean
+	@$(LAKE) clean
 
 cleanall: ## Completely clean the project by removing build artifacts and the build directory
-	$(RM) .lake docbuild/.lake
+	@$(RM) .lake docbuild/.lake
