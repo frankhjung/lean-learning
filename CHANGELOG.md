@@ -2,6 +2,37 @@
 
 All notable changes to the `learning` Lean project are documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- **Documentation:**
+  - Added Elan installation instructions for Linux and macOS.
+  - Added a development section outlining common Makefile targets
+    (`build`, `test`, `lint`, and `doc`).
+  - Documented the repository's project structure in the `README.md`.
+  - Added links for the Lean Language Guide and licence references.
+
+### Changed
+
+- **Tooling:** Upgraded the Lean toolchain to `v4.31.0-rc2` and updated
+  dependencies (including community `batteries` and `doc-gen4`) for both
+  the main package and the documentation build configuration.
+
+### Fixed
+
+- **Build System:**
+  - Configured the `Makefile` to dynamically resolve the Lean installation
+    prefix and set `LD_LIBRARY_PATH` before invoking `lake`, preventing
+    runtime link errors.
+  - Silenced the output of Makefile commands by prefixing recipe lines
+    with `@`.
+  - Fixed syntax errors in the `Makefile` `doc` and `update` targets by
+    removing invalid `@` prefixes from within multi-line shell commands.
+  - Standardised directory changing in the Makefile by using the `CD`
+    variable.
+  - Updated Makefile to view locally generated documentation.
+
 ## [0.1.0] - 2026-06-03
 
 ### Added

@@ -30,12 +30,16 @@ lint: ## Run the linter using Lake
 
 doc: ## Generate documentation using Lake
 	@$(CD) docbuild && \
-	@$(LAKE) update doc-gen4 && \
-	@$(LAKE) build Learning:docs
+	$(LAKE) update doc-gen4 && \
+	$(LAKE) build Learning:docs
+
+viewdoc: ## View generated documentation locally
+	@exo-open --launch WebBrowser docbuild/.lake/build/doc/index.html
 
 update: ## Update the dependencies using Lake
 	@$(LAKE) update
-	@$(CD) docbuild && $(LAKE) update doc-gen4
+	@$(CD) docbuild && \
+	$(LAKE) update doc-gen4
 
 clean: ## Clean the build artifacts
 	@$(LAKE) clean
