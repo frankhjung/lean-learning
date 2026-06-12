@@ -5,8 +5,17 @@ that enables correct, maintainable, and formally verified code
 
 ## Installation
 
-Follow the instructions on the [Lean installation page][lean-installation] to
-install
+This project requires Lean 4. You can install it using
+[Elan](https://github.com/leanprover/elan).
+
+**Linux/macOS:**
+
+```bash
+curl https://raw.githubusercontent.com/leanprover/elan/master/toolchain.sh | sh
+```
+
+Alternatively, follow the instructions on the
+[Lean installation page][lean-installation].
 
 ## First Steps
 
@@ -30,6 +39,33 @@ lake exe learning <name>
 
 The [Basic.lean](Learning/Basic.lean) file contains examples of basic concepts
 in Lean.
+
+## Development
+
+A `Makefile` is provided to simplify development and testing targets.
+
+```bash
+# Build the project
+make build
+
+# Run the unit test suite
+make test
+
+# Run the linter
+make lint
+
+# Generate documentation
+make doc
+```
+
+### Project Structure
+
+- `Main.lean`: The entrypoint for the `learning` executable.
+- `Learning.lean`: The root library file that imports the library modules.
+- `Learning/`: Directory containing basic, HelloWorld, and structure lessons.
+- `Test.lean`: The test runner entrypoint that executes the test suite.
+- `Test/`: Directory containing tests corresponding to each lesson.
+- `lakefile.toml`: Package build configuration for Lake.
 
 ## CI/CD
 
@@ -122,14 +158,21 @@ The following GitHub Actions are used in this project:
 
 ## Resources
 
+- [API Documentation][lean-api-docs] - The API documentation for Lean.
+- [FAQ][lean-faq] - A frequently asked questions page about Lean.
 - [Functional Programming in Lean][functional-programming-in-lean] - A book on
   functional programming in Lean.
-- [API Documentation][lean-api-docs] - The API documentation for Lean.
 - [Lean GitHub][lean-github] - The GitHub repository for Lean.
 - [Lean Homepage][lean-homepage] - The official homepage of Lean.
-- [FAQ][lean-faq] - A frequently asked questions page about Lean.
+- [Lean Language Guide][lean-language-guide] - A guide to the Lean programming
+  language.
 - [Notebook][lean-notebook] - A notebook interface for Lean.
 - [Package Reservoir][lean-reservoir] - The GitHub repository for Lean.
+
+## License
+
+This project is licensed under the
+[GNU General Public License Version 3](LICENSE).
 
 [functional-programming-in-lean]: https://lean-lang.org/functional_programming_in_lean/
 [lean-api-docs]: https://lean-lang.org/doc/api/
@@ -137,6 +180,6 @@ The following GitHub Actions are used in this project:
 [lean-github]: https://github.com/leanprover/lean4
 [lean-homepage]: https://leanprover.github.io/
 [lean-installation]: https://lean-lang.org/install/
+[lean-language-guide]: https://lean4.dev/language
 [lean-notebook]: https://notebooklm.google.com/notebook/c5971c43-5793-44b4-8fa9-65a968dfe8c5
 [lean-reservoir]: https://reservoir.lean-lang.org/
-
