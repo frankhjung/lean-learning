@@ -5,8 +5,9 @@ tests and demos. The examples illustrate conditional expressions, basic
 arithmetic, type aliases/abbreviations, and simple boolean predicates.
 -/
 
-/-- Return a string that appends either `42` or `0` to `name` depending on `value`.
-    This demonstrates a conditional expression and `toString` conversion. -/
+/-- Return a string that appends either `42` or `0` to `name` depending on
+  `value`. This demonstrates a conditional expression and `toString`
+  conversion. -/
 def hitchHiker (name : String) (value : Int) : String :=
   String.append name (toString (if value > 2 then 42 else 0))
 
@@ -31,3 +32,10 @@ def isAdult (age : Age) : Bool := age >= 18
 /-- Example ages used in tests/demonstrations. -/
 def tonyAge : Age := 25
 def lisaAge : Age := 15
+
+/-- Safe Head: should be the same as `List.head`, but with a proof of
+  non-emptiness. -/
+def safeHead {α : Type} (xs : { l : List α // l ≠ []}) : α :=
+  match xs with
+  | ⟨[], h⟩ => False.elim (h rfl)
+  | ⟨x :: _, _⟩ => x

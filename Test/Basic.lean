@@ -34,4 +34,7 @@ def runTests (st : IO.Ref State) : IO Unit := do
   assertEqual st (isAdult tonyAge) true "isAdult tonyAge"
   assertEqual st (isAdult lisaAge) false "isAdult lisaAge"
 
+  -- Safe head on non-empty list
+  assertEqual st (safeHead ⟨[1, 2, 3], by decide⟩) 1 "safeHead on non-empty list"
+
 end Test.Basic

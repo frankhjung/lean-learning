@@ -3,11 +3,13 @@ import Test.Util
 
 open Test.Util
 
+/-- Make `Point` values printable. -/
 instance : ToString Point where
   toString p := s!"\{ x := {p.x}, y := {p.y} }"
 
 namespace Test.Structure
 
+/-- Run structure-related tests. -/
 def runTests (st : IO.Ref State) : IO Unit := do
   IO.println "\n[TEST] Testing Learning.Structure"
 

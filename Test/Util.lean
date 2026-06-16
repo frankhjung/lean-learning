@@ -1,12 +1,15 @@
 namespace Test.Util
 
+/-- Mutable state for test results -/
 structure State where
   fails : Nat
   total : Nat
 
+/-- Record success and failure counts. -/
 def mkState : IO (IO.Ref State) :=
   IO.mkRef { fails := 0, total := 0 }
 
+/-- Assert equality between two values and record the result. -/
 def assertEqual {α : Type} [BEq α] [ToString α] (st : IO.Ref State) (actual : α) (expected : α) (msg : String) : IO Unit := do
   let s ← st.get
   let total := s.total + 1
@@ -17,6 +20,7 @@ def assertEqual {α : Type} [BEq α] [ToString α] (st : IO.Ref State) (actual :
     st.set { s with total := total, fails := s.fails + 1 }
     IO.println s!"[FAIL] {msg}: expected {expected}, got {actual}"
 
+/-- Print summary of test results. -/
 def summary (st : IO.Ref State) : IO Unit := do
   let s ← st.get
   IO.println ""
