@@ -1,14 +1,14 @@
 # Learning Lean
 
 [Lean][lean-homepage] is an open-source programming language and proof assistant
-that enables correct, maintainable, and formally verified code
+that enables correct, maintainable, and formally verified code.
 
 ## Installation
 
 This project requires Lean 4. You can install it using
 [Elan](https://github.com/leanprover/elan).
 
-**Linux/macOS:**
+### Linux
 
 ```bash
 curl https://raw.githubusercontent.com/leanprover/elan/master/toolchain.sh | sh
@@ -56,6 +56,22 @@ make lint
 
 # Generate documentation
 make doc
+```
+
+### Default Lean 4
+
+This project is built using the latest stable release of Lean 4:
+
+```bash
+elan default leanprover/lean4:stable
+cd docbuild && elan default leanprover/lean4:stable
+```
+
+To ensure you are using the correct version, you can check your Lean version
+with:
+
+```bash
+
 ```
 
 ### Project Structure
@@ -137,13 +153,24 @@ lake update doc-gen4
 lake build Learning:docs
 ```
 
-Once generated, you can serve the documentation locally by running:
+Once generated, you can serve the documentation locally on
+[http://localhost:8000](http://localhost:8000) with:
 
 ```bash
 python3 -m http.server --directory docbuild/.lake/build/doc 8000
 ```
 
-This should render something like this in your browser:
+Or open a browser to `./docbuild/.lake/build/doc/index.html`:
+
+```bash
+# Default Browser
+exo-open --launch www docbuild/.lake/build/doc/index.html
+
+# Google Chrome
+google-chrome docbuild/.lake/build/doc/index.html
+```
+
+#### Example
 
 ![Documentation Screenshot](docs/doc-screenshot.png)
 

@@ -21,3 +21,9 @@ root = "Main"
 [[lean_exe]]
 name = "learning_test"
 root = "Test"
+
+[[require]]
+scope = "leanprover"
+name = "doc-gen4"
+rev = "v4.31.0"  # matches toolchain version
+
