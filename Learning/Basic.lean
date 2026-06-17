@@ -31,6 +31,7 @@ def isAdult (age : Age) : Bool := age >= 18
 
 /-- Example ages used in tests/demonstrations. -/
 def tonyAge : Age := 25
+/-- Example age used in tests/demonstrations. -/
 def lisaAge : Age := 15
 
 /-- Safe Head: should be the same as `List.head`, but with a proof of

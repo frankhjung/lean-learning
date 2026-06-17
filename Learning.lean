@@ -1,5 +1,9 @@
--- This module serves as the root of the `Learning` library.
--- Import modules here that should be built as part of the library.
 import Learning.HelloWorld
-import Learning.Basic
-import Learning.Structure
+
+open Learning.HelloWorld (greet)
+
+/-- Entrypoint for the `learning` executable. -/
+def main (args : List String) : IO Unit :=
+  match args with
+  | x :: _ => IO.println (greet x)
+  | []     => IO.println "Usage: lake exe learning <name>"

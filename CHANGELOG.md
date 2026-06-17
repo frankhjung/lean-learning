@@ -6,32 +6,65 @@ All notable changes to the `learning` Lean project are documented in this file.
 
 ### Added
 
+- **Library:** Added `Learning/All.lean` as a convenience re-export
+  module for the full `Learning` library (`Basic`, `HelloWorld`,
+  `Structure`).
 - **Documentation:**
-  - Added Elan installation instructions for Linux and macOS.
-  - Added a development section outlining common Makefile targets
+  - Elan installation instructions for Linux and macOS.
+  - Development section outlining common Makefile targets
     (`build`, `test`, `lint`, and `doc`).
-  - Documented the repository's project structure in the `README.md`.
+  - Documented the repository's project structure in `README.md`,
+    including the new `Learning/All.lean` module.
   - Added links for the Lean Language Guide and licence references.
+  - Filled in the missing `lean --version` command in the README.
 
 ### Changed
 
+- **Project Structure:** Renamed `Main.lean` to `Learning.lean` as the
+  entry point for the `learning` executable, following the idiomatic
+  Lean 4 convention of naming the executable root after the package.
+  The previous `Learning.lean` library root (import re-exports) was
+  moved to `Learning/All.lean`.
+- **Lake Configuration (`lakefile.toml`):**
+  - Set `globs = ["Learning.+"]` on the `Learning` library so Lake
+    auto-discovers all submodules under `Learning/` without requiring a
+    top-level library root file.
+  - Updated the `learning` executable `root` from `Main` to `Learning`.
+  - Added `"Learning"` to `defaultTargets`.
+  - Removed explicit `lintDriverArgs`; `lake lint` now auto-detects
+    default targets, which restricts linting to project modules only
+    and avoids picking up identically-named modules from dependencies
+    (e.g. `MD4Lean/Main.lean`).
 - **Tooling:** Upgraded the Lean toolchain to `v4.31.0-rc2` and updated
   dependencies (including community `batteries` and `doc-gen4`) for both
   the main package and the documentation build configuration.
 
 ### Fixed
 
+- **Linting:**
+  - Restricted `lake lint` scope to project-owned modules by configuring
+    `lintDriverArgs` in `lakefile.toml`, preventing lint errors from
+    surfacing in third-party dependency packages (e.g. `MD4Lean`).
+  - Added missing doc strings to `Learning.Basic.lisaAge`,
+    `Learning.Structure.Point.x`, `Learning.Structure.Point.y`, and
+    `Learning.Structure.p2`.
+  - Replaced the auto-derived `Repr Point` instance (which triggered an
+    `unusedArguments` warning on the `prec` parameter) with a manual
+    `instance : Repr Point` that binds `_prec`.
 - **Build System:**
-  - Configured the `Makefile` to dynamically resolve the Lean installation
-    prefix and set `LD_LIBRARY_PATH` before invoking `lake`, preventing
-    runtime link errors.
+  - Configured the `Makefile` to dynamically resolve the Lean
+    installation prefix and set `LD_LIBRARY_PATH` before invoking
+    `lake`, preventing runtime link errors.
   - Silenced the output of Makefile commands by prefixing recipe lines
     with `@`.
-  - Fixed syntax errors in the `Makefile` `doc` and `update` targets by
-    removing invalid `@` prefixes from within multi-line shell commands.
-  - Standardised directory changing in the Makefile by using the `CD`
+  - Fixed syntax errors in the `Makefile` `doc` and `update` targets
+    by removing invalid `@` prefixes from within multi-line shell
+    commands.
+  - Standardised directory changing in the Makefile using the `CD`
     variable.
   - Updated Makefile to view locally generated documentation.
+- **README:** Corrected `lake lint -- --update` to `lake lint --update`
+  (the double-dash was incorrect syntax).
 
 ## [0.1.0] - 2026-06-03
 

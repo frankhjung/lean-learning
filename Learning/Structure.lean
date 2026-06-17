@@ -6,9 +6,15 @@ coordinates and a few example values and operations used in tests.
 
 /-- A 2D point with `x` and `y` coordinates as `Float`. -/
 structure Point where
+  /-- The horizontal coordinate. -/
   x : Float
+  /-- The vertical coordinate. -/
   y : Float
-  deriving BEq, Inhabited, Repr
+  deriving BEq, Inhabited
+
+instance : Repr Point where
+  reprPrec p _prec :=
+    repr s!"Point(\{x := {p.x}, y := {p.y}})"
 
 /-- The origin point `(0.0, 0.0)`. -/
 def origin : Point := { x := 0.0, y := 0.0 }
@@ -19,4 +25,5 @@ def addPoints (p1 : Point) (p2 : Point) : Point :=
 
 /-- Example points used in tests and examples. -/
 def p1 : Point := { x := 3.0, y := 4.0 }
+/-- Example point used in tests and examples. -/
 def p2 : Point := { x := 1.0, y := 2.0 }

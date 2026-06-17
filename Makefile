@@ -36,7 +36,7 @@ exe: ## Run the `learning` executable with a sample name
 
 lint: ## Run the linter
 	@$(LAKE) check-lint
-	@$(LAKE) lint
+	@$(LAKE) lint --lint-all
 
 doc: ## Generate documentation using Lake
 	@$(CD) docbuild && \

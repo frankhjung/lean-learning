@@ -71,14 +71,17 @@ To ensure you are using the correct version, you can check your Lean version
 with:
 
 ```bash
-
+lean --version
 ```
 
 ### Project Structure
 
-- `Main.lean`: The entrypoint for the `learning` executable.
-- `Learning.lean`: The root library file that imports the library modules.
-- `Learning/`: Directory containing basic, HelloWorld, and structure lessons.
+- `Learning.lean`: The entrypoint for the `learning` executable.
+- `Learning/`: Directory containing the library modules:
+  - `All.lean`: Convenience re-export of all library modules.
+  - `Basic.lean`: Basic concepts — conditionals, arithmetic, types.
+  - `HelloWorld.lean`: Greeting utilities used by the executable.
+  - `Structure.lean`: A 2D `Point` structure and helpers.
 - `Test.lean`: The test runner entrypoint that executes the test suite.
 - `Test/`: Directory containing tests corresponding to each lesson.
 - `lakefile.toml`: Package build configuration for Lake.
@@ -119,7 +122,7 @@ suppressed lint entries. To update the `nolints` file after inspecting linter
 output, run:
 
 ```bash
-lake lint -- --update
+lake lint --update
 ```
 
 To add project-specific suppressions, create or edit `scripts/nolints.json`.

@@ -1,26 +1,27 @@
 name = "learning"
 version = "0.1.0"
-defaultTargets = ["learning"]
+defaultTargets = ["learning", "Learning"]
 lintDriver = "batteries/runLinter"
 testDriver = "learning_test"
 
-[[require]]
-name = "batteries"
-scope = "leanprover-community"
-
 [[lean_lib]]
 name = "Learning"
+globs = ["Learning.+"]
 
 [[lean_lib]]
 name = "Test"
 
 [[lean_exe]]
 name = "learning"
-root = "Main"
+root = "Learning"
 
 [[lean_exe]]
 name = "learning_test"
 root = "Test"
+
+[[require]]
+name = "batteries"
+scope = "leanprover-community"
 
 [[require]]
 scope = "leanprover"
