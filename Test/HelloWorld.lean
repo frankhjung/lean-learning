@@ -6,6 +6,7 @@ open Test.Util (assertEqual State mkState summary)
 
 namespace Test.HelloWorld
 
+/-- Run hello world tests. -/
 def runTests (st : IO.Ref State) : IO Unit := do
   IO.println "\n[TEST] Testing Learning.HelloWorld"
 

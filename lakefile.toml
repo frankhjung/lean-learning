@@ -1,12 +1,12 @@
-name = "learning"
+name = "Learning"
 version = "0.1.0"
-defaultTargets = ["learning", "Learning"]
+defaultTargets = ["Learning"]
 lintDriver = "batteries/runLinter"
 testDriver = "learning_test"
 
 [[lean_lib]]
 name = "Learning"
-globs = ["Learning.+"]
+globs = ["Learning", "Learning.+"]
 
 [[lean_lib]]
 name = "Test"
@@ -26,5 +26,4 @@ scope = "leanprover-community"
 [[require]]
 scope = "leanprover"
 name = "doc-gen4"
-rev = "v4.31.0"  # matches toolchain version
-
+rev = "v4.31.0"      # matches toolchain version

@@ -84,6 +84,7 @@ lean --version
   - `Structure.lean`: A 2D `Point` structure and helpers.
 - `Test.lean`: The test runner entrypoint that executes the test suite.
 - `Test/`: Directory containing tests corresponding to each lesson.
+  - `Util.lean`: Test utilities including assertion helpers.
 - `lakefile.toml`: Package build configuration for Lake.
 
 ## CI/CD

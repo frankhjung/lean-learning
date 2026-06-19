@@ -5,6 +5,7 @@ import Test.Util
 
 open Test.Util (mkState summary)
 
+/-- Run the test suite. -/
 def main : IO Unit := do
   IO.println "Running tests..."
 

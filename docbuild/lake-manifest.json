@@ -3,7 +3,7 @@
  "packages":
  [{"type": "path",
    "scope": "",
-   "name": "learning",
+   "name": "Learning",
    "manifestFile": "lake-manifest.json",
    "inherited": false,
    "dir": "../",

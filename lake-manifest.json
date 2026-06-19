@@ -71,6 +71,6 @@
    "inputRev": "main",
    "inherited": true,
    "configFile": "lakefile.lean"}],
- "name": "learning",
+ "name": "Learning",
  "lakeDir": ".lake",
  "fixedToolchain": false}

@@ -51,6 +51,11 @@ All notable changes to the `learning` Lean project are documented in this file.
   - Replaced the auto-derived `Repr Point` instance (which triggered an
     `unusedArguments` warning on the `prec` parameter) with a manual
     `instance : Repr Point` that binds `_prec`.
+  - Fixed typographical errors in doc strings for `Learning.Basic.tonyAge`
+    and `Learning.Structure.p1`.
+  - Converted the comment in `Learning/All.lean` to a module docstring.
+  - Added missing doc strings to `Test.Basic.runTests`,
+    `Test.HelloWorld.runTests`, and `Test.main`.
 - **Build System:**
   - Configured the `Makefile` to dynamically resolve the Lean
     installation prefix and set `LD_LIBRARY_PATH` before invoking
@@ -63,8 +68,10 @@ All notable changes to the `learning` Lean project are documented in this file.
   - Standardised directory changing in the Makefile using the `CD`
     variable.
   - Updated Makefile to view locally generated documentation.
-- **README:** Corrected `lake lint -- --update` to `lake lint --update`
-  (the double-dash was incorrect syntax).
+- **README:**
+  - Added `Test/Util.lean` to the project structure documentation.
+  - Corrected `lake lint -- --update` to `lake lint --update`
+    (the double-dash was incorrect syntax).
 
 ## [0.1.0] - 2026-06-03
 

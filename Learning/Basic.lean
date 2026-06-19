@@ -29,7 +29,7 @@ abbrev Age : Type := Nat
 /-- Return `true` when `age` represents an adult (>= 18). -/
 def isAdult (age : Age) : Bool := age >= 18
 
-/-- Example ages used in tests/demonstrations. -/
+/-- Example age used in tests/demonstrations. -/
 def tonyAge : Age := 25
 /-- Example age used in tests/demonstrations. -/
 def lisaAge : Age := 15
