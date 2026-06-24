@@ -199,6 +199,7 @@ The following GitHub Actions are used in this project:
   language.
 - [Notebook][lean-notebook] - A notebook interface for Lean.
 - [Package Reservoir][lean-reservoir] - The GitHub repository for Lean.
+- [Verso][lean-verso] - Writing documentation with Lean.
 
 ## License
 
@@ -214,3 +215,4 @@ This project is licensed under the
 [lean-language-guide]: https://lean4.dev/language
 [lean-notebook]: https://notebooklm.google.com/notebook/c5971c43-5793-44b4-8fa9-65a968dfe8c5
 [lean-reservoir]: https://reservoir.lean-lang.org/
+[lean-verso]: https://verso.lean-lang.org/

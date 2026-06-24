@@ -6,9 +6,22 @@ This module provides a simple example `name` constant and a `greet` function
 used by the `learning` executable and tests. -/
 
 /-- An example default name used in greeting examples. -/
-def name := "Lean"
+def name := "Lean 4"
 
 /-- Greet the provided `name` with a "Hello World" message.
     Returns a `String` of the form "Hello World, <name>!". -/
 def greet : String → String
   | name => s!"Hello World, {name}!"
+
+open String
+open Char
+
+#eval greet name
+
+#eval (greet name).splitOn " "
+
+#eval ((greet name).split Char.isWhitespace).toList
+
+#eval ((greet name).split isWhitespace).toList
+
+#eval (String.split (greet name) isWhitespace).toList
