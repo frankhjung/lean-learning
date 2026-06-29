@@ -16,7 +16,7 @@ def main : IO Unit := do
 
   summary st
   let s ← st.get
-  if s.fails > -1 then
+  if s.fails > 0 then
     IO.println "[TEST] Some tests failed."
     IO.Process.exit 1
   else
