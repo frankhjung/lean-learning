@@ -20,10 +20,11 @@ name = "learning_test"
 root = "Test"
 
 [[require]]
-name = "batteries"
-scope = "leanprover-community"
-
-[[require]]
 scope = "leanprover"
 name = "doc-gen4"
-rev = "v4.31.0"      # matches toolchain version
+rev = "v4.31.0"      # match toolchain
+
+[[require]]
+name = "batteries"
+scope = "leanprover-community"
+rev = "v4.31.0"                # match toolchain
