@@ -35,8 +35,12 @@ def tonyAge : Age := 25
 def lisaAge : Age := 15
 
 /-- Safe Head: should be the same as `List.head`, but with a proof of
-  non-emptiness. -/
+    non-emptiness. -/
 def safeHead {α : Type} (xs : { l : List α // l ≠ []}) : α :=
   match xs with
   | ⟨[], h⟩ => False.elim (h rfl)
   | ⟨x :: _, _⟩ => x
+
+/-! Example: Safe head: -/
+example : safeHead ⟨['a', 'b', 'c'], by decide⟩ = 'a' :=
+  rfl
